@@ -82,5 +82,5 @@ test:
 production:
   <<: *default
   database: rp2plus_production
-  username: rp2plus
+  username: anisio
   password: <%= ENV["RP2PLUS_DATABASE_PASSWORD"] %>
