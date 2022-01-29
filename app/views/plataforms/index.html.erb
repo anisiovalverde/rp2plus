@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Plataforms</h1>
+
+<div id="plataforms">
+  <% @plataforms.each do |plataform| %>
+    <%= render plataform %>
+    <p>
+      <%= link_to "Show this plataform", plataform %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New plataform", new_plataform_path %>

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @plataform %>
+
+<div>
+  <%= link_to "Edit this plataform", edit_plataform_path(@plataform) %> |
+  <%= link_to "Back to plataforms", plataforms_path %>
+
+  <%= button_to "Destroy this plataform", @plataform, method: :delete %>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_29_163549) do
+ActiveRecord::Schema.define(version: 2022_01_29_205448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,4 +26,47 @@ ActiveRecord::Schema.define(version: 2022_01_29_163549) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "games", force: :cascade do |t|
+    t.string "name"
+    t.boolean "active"
+    t.bigint "plataform_id", null: false
+    t.bigint "work_id", null: false
+    t.bigint "region_id", null: false
+    t.bigint "console_id", null: false
+    t.string "tester"
+    t.text "youtube"
+    t.text "extra"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["console_id"], name: "index_games_on_console_id"
+    t.index ["plataform_id"], name: "index_games_on_plataform_id"
+    t.index ["region_id"], name: "index_games_on_region_id"
+    t.index ["work_id"], name: "index_games_on_work_id"
+  end
+
+  create_table "plataforms", force: :cascade do |t|
+    t.string "name"
+    t.boolean "active"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "regions", force: :cascade do |t|
+    t.string "name"
+    t.boolean "active"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "works", force: :cascade do |t|
+    t.string "name"
+    t.boolean "active"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "games", "consoles"
+  add_foreign_key "games", "plataforms"
+  add_foreign_key "games", "regions"
+  add_foreign_key "games", "works"
 end
